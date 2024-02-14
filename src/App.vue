@@ -38,6 +38,7 @@
       <li>Titolo Originale: {{ movie.original_title }} </li>
       <li>Lingua Originale: {{ movie.original_language }} </li>
       <li>Voto: {{ movie.vote_average }}/10</li>
+      <li>Anno di Uscita: {{ movie.release_date.substr(0,4) }}</li>
     </ul>
   </div>
   
