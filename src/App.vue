@@ -7,20 +7,20 @@
     data() {
       return {
         MovieList: [],
-        title: 'titolo',
+        searchValue: '',
       }
     },
     methods: {
-      fetchMovieList() {
-        axios.get('https://api.themoviedb.org/3/search/movie?api_key=875b204ed440a701c5a21db41f3ee0a2&language=it-IT&query=porco rosso')
+      fetchMovieList(param) {
+        axios.get('https://api.themoviedb.org/3/search/movie?api_key=875b204ed440a701c5a21db41f3ee0a2&language=it-IT&query='+param)
           .then((res) => {
             this.MovieList = res.data.results;
           });
       },
     },
     created() {
-      console.log(this.title);
-      this.fetchMovieList();
+      // console.log(this.title);
+      // this.fetchMovieList();
     },
   }
 
@@ -28,11 +28,19 @@
 
 <template>
 
-  <h1>{{ title }}</h1>
+  <input type="text" v-model="searchValue"/>
+  <button @click="fetchMovieList(searchValue)">Cerca</button>
 
-  <ul>
-    <li v-for="movie in MovieList"> {{ movie.title }}</li>
-  </ul>
+
+  <div v-for="movie in MovieList"> 
+    <ul>
+      <li>Titolo: {{ movie.title }} </li>
+      <li>Titolo Originale: {{ movie.original_title }} </li>
+      <li>Lingua Originale: {{ movie.original_language }} </li>
+      <li>Voto: {{ movie.vote_average }}/10</li>
+    </ul>
+  </div>
+  
  
 </template>
 
