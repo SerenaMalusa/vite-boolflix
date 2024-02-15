@@ -42,6 +42,10 @@ export const titles = reactive ({
             if (apiUri.includes('movie?')) this.movieList = res.data.results;
             if (apiUri.includes('tv?')) this.tvShowList = res.data.results;
 
+        })
+        .catch((error) => {
+            console.log(error);
+            alert('Server error');
         });
     },
 

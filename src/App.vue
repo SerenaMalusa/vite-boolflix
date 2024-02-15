@@ -19,7 +19,7 @@
 <template>
 
   <input 
-  @keyup.enter="titles.fetchTitles(titles.movieApiUri,searchValue); titles.fetchTitles(titles.tvShowApiUri,searchValue);" 
+  @keyup.enter="titles.fetchTitles('apiUri',searchValue);" 
   v-model="searchValue"
   type="text" 
   />
