@@ -8,72 +8,9 @@
   export default {
     data() {
       return {
-        titles,
-        // MovieList: [], 
-        // tvList: [],
-        // resultsList: [],       
+        titles,      
         searchValue: '',
       }
-    },
-    methods: {
-      // fetchMovieList(param) {
-      //   this.resultsList = [],
-      //   axios.get('https://api.themoviedb.org/3/search/movie?', {
-      //     params: {
-      //       api_key: '875b204ed440a701c5a21db41f3ee0a2',
-      //       language: 'it-IT',
-      //       query: param,
-      //     }
-      //   }).then((res) => {
-      //         this.MovieList = res.data.results;
-      //         this.addToResultsList(this.MovieList);
-      //     });
-      // },
-
-      // addToResultsList(array) {
-      //   const foundTitles = array.map((title) => {
-
-      //     if (title.title) {
-      //       return {
-      //         type: 'Film',
-      //         title: title.title,
-      //         og_title: title.original_title,
-      //         og_lan: title.original_language,
-      //         vote: title.vote_average.toFixed(1),
-      //         release_year: title.release_date.substr(0,4),
-      //       }
-      //     } else if (title.name) {
-      //       return {
-      //         type: 'Serie',
-      //         title: title.name,
-      //         og_title: title.original_name,
-      //         og_lan: title.original_language,
-      //         vote: title.vote_average.toFixed(1),
-      //         release_year: title.first_air_date.substr(0,4),
-      //       }
-      //     }
-
-      //   });
-
-      //   foundTitles.forEach((title) => {
-      //     this.resultsList.push(title);
-      //   });
-
-      //   this.resultsList.sort((a,b) => b.vote - a.vote);
-
-      // },
-      
-      // fetcTvList(param) {
-      //   axios.get('https://api.themoviedb.org/3/search/tv?api_key=875b204ed440a701c5a21db41f3ee0a2&language=it-IT&query='+param)
-      //     .then((res) => {
-      //         this.tvList = res.data.results;
-      //         this.addToResultsList(this.tvList);
-      //     });
-      // }
-    },
-    created() {
-      // console.log(this.title);
-      // this.fetchMovieList();
     },
   }
 
@@ -82,12 +19,12 @@
 <template>
 
   <input 
-  @keyup.enter="titles.fetchList(titles.movieApiUri,searchValue); titles.fetchList(titles.tvShowApiUri,searchValue);" 
+  @keyup.enter="titles.fetchTitles(titles.movieApiUri,searchValue); titles.fetchTitles(titles.tvShowApiUri,searchValue);" 
   v-model="searchValue"
   type="text" 
   />
   <button 
-  @click="titles.fetchList(titles.movieApiUri,searchValue); titles.fetchList(titles.tvShowApiUri,searchValue);"
+  @click="titles.fetchTitles(titles.movieApiUri,searchValue); titles.fetchTitles(titles.tvShowApiUri,searchValue);"
   >
   Cerca
   </button>
@@ -104,21 +41,8 @@
         <li>Anno di Uscita: {{ title.release_year }}</li>
       </ul>
     </div>
-  
-    <!-- <div> 
-      <h2>Serie</h2>
-      <ul v-for="show in tvList">
-        <li>Titolo: {{ show.name }} </li>
-        <li>Titolo Originale: {{ show.original_name }} </li>
-        <li>Lingua Originale: {{ show.original_language }} </li>
-        <li>Voto: {{ show.vote_average }}/10</li>
-        <li>Anno di Uscita: {{ show.first_air_date.substr(0,4) }}</li>
-      </ul>
-    </div> -->
 
-  </div>
-
-  
+  </div>  
  
 </template>
 

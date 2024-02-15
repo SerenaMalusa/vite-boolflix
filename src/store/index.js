@@ -1,30 +1,50 @@
 import { reactive } from 'vue';
+// import axios
 import axios from 'axios';
 
+// all things related to the searched titles
 export const titles = reactive ({
+
+    // arrays for the search results
     movieList: [],
     tvShowList: [],
     titlesList: [],
+
+    // API endpoints
     movieApiUri: 'https://api.themoviedb.org/3/search/movie?',
     tvShowApiUri: 'https://api.themoviedb.org/3/search/tv?',
-    fetchList(apiUri,searchParam) {
 
-        // empty titlesList
+    // function that calls the API with axios
+    fetchTitles(apiUri,searchParam) {
+
+        // empty the arrays
         this.titlesList = [];
+        this.movieList = [];
+        this.tvShowList = [];
 
         // axios api call to the selected API uri
         axios.get(apiUri, {
+
             // set the parameters
             params: {
                 api_key: '875b204ed440a701c5a21db41f3ee0a2',
                 language: 'it-IT',
                 query: searchParam,
             }
-        // when the response is ready add it to titleList    
+
+        // when the response is ready     
         }).then((res) => {
+
+            // add it to titleList
             this.addToTitlesList(res.data.results);
+
+            // add it to the array related to your research
+            if (apiUri.includes('movie?')) this.movieList = res.data.results;
+            if (apiUri.includes('tv?')) this.tvShowList = res.data.results;
+
         });
     },
+
     // function to add the results of the call to titleList
     addToTitlesList(results) {
         
@@ -41,6 +61,7 @@ export const titles = reactive ({
                     vote: result.vote_average.toFixed(1),
                     release_year: result.release_date.substr(0,4),
                 }
+
             // if it's a serie
             } else if (result.name) {
                 return {
