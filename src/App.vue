@@ -64,8 +64,8 @@
           <span :class="'fi fi-'+titles.getLangFlag(title.ogLan)"></span> 
         </li>
         <li>Voto:
-          <font-awesome-icon v-if="titles.getStars(title.vote) >= 1" v-for="i in titles.getStars(title.vote)" icon="fa-solid fa-star" />
-          <font-awesome-icon v-if="titles.getStars(title.vote) <= 0" icon="fa-regular fa-star" />
+          <font-awesome-icon v-for="i in titles.getStars(title.vote)" icon="fa-solid fa-star" />
+          <font-awesome-icon v-for="i in (5 - titles.getStars(title.vote))" icon="fa-regular fa-star" />
         </li>
         <li>Anno di Uscita: {{ title.releaseYear || 'unknonw' }}</li>
         <li>
