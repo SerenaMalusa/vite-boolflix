@@ -63,7 +63,10 @@
           </span>
           <span :class="'fi fi-'+titles.getLangFlag(title.ogLan)"></span> 
         </li>
-        <li>Voto: {{ title.vote }}/10 -> {{ titles.getStars(title.vote) }}/5 <font-awesome-icon icon="fa-solid fa-star" /></li>
+        <li>Voto: {{ title.vote }}/10 -> 
+          <font-awesome-icon v-if="titles.getStars(title.vote) >= 1" v-for="i in titles.getStars(title.vote)" icon="fa-solid fa-star" />
+          <font-awesome-icon v-if="titles.getStars(title.vote) <= 0" icon="fa-regular fa-star" />
+        </li>
         <li>Anno di Uscita: {{ title.releaseYear || 'unknonw' }}</li>
         <li>
           <img :src="titles.getImgUrl(title.poster)" alt="#">
@@ -88,6 +91,10 @@
     div {
       width: 50%;
     }
+  }
+
+  .fa-star {
+    color: goldenrod;
   }
 
 </style>

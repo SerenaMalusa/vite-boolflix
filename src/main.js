@@ -10,8 +10,10 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 /* import specific icons from the solid kit */
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+/* import specific icons from the solid kit */
+import { faStar as faEmptyStar } from '@fortawesome/free-regular-svg-icons';
 /* add icons to the library */
-library.add(faStar);
+library.add(faStar, faEmptyStar);
 
 const app = createApp(App);
 app.component('font-awesome-icon',FontAwesomeIcon);
