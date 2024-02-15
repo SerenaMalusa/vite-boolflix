@@ -23,7 +23,7 @@
 
         // split the value by the spaces
         const valueWords = value.trim().split(' ');
-        console.log(valueWords);
+        // console.log(valueWords);
 
         // if the user did not write anything or they wrote only spaces
         if (!value || valueWords[0] == '' && valueWords.length == 1) {
@@ -50,7 +50,6 @@
   />
   <button @click="startSearch(searchValue)">Cerca</button>
 
-
   <div class="container">
 
     <div> 
@@ -58,9 +57,14 @@
         <li>Tipo: {{ title.type }}</li>
         <li>Titolo: {{ title.title }} </li>
         <li>Titolo Originale: {{ title.og_title }} </li>
-        <li>Lingua Originale: {{ title.og_lan }} </li>
+        <li>
+          <span>
+            Lingua Originale: {{ title.og_lan + ' '}} 
+          </span>
+          <span :class="'fi fi-'+titles.getLangFlag(title.og_lan)"></span> 
+        </li>
         <li>Voto: {{ title.vote }}/10</li>
-        <li>Anno di Uscita: {{ title.release_year }}</li>
+        <li>Anno di Uscita: {{ title.release_year || 'unknonw' }}</li>
       </ul>
     </div>
 

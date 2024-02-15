@@ -62,6 +62,7 @@ export const titles = reactive ({
                     title: result.title,
                     og_title: result.original_title,
                     og_lan: result.original_language,
+                    og_country: result.origin_country,
                     vote: result.vote_average.toFixed(1),
                     release_year: result.release_date.substr(0,4),
                 }
@@ -88,5 +89,18 @@ export const titles = reactive ({
         // sort titlesList by the highest vote
         this.titlesList.sort((a,b) => b.vote - a.vote);
 
-    }
+    },
+    // function to get the flag that corresponds to the original language
+    getLangFlag(ogLang) {
+        
+        // handle the differences with the library
+        if (ogLang == 'en') return 'gb';
+        if (ogLang == 'ja') return 'jp';
+        if (ogLang == 'ko') return 'kr';
+        // console.log(ogLang);
+
+        // or just return the og_lang value
+        return ogLang;
+
+    },
 });
