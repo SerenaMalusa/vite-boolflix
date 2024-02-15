@@ -16,12 +16,17 @@
       // function that starts the research and handle the digitation's errors
       startSearch(value) {
 
+        // empty the arrays
+        titles.titlesList = [];
+        titles.movieList = [];
+        titles.tvShowList = [];
+
         // split the value by the spaces
         const valueWords = value.trim().split(' ');
-        // console.log(valueWords);
+        console.log(valueWords);
 
         // if the user did not write anything or they wrote only spaces
-        if (!value || valueWords.length <= 1 ) {
+        if (!value || valueWords[0] == '' && valueWords.length == 1) {
           // do nothing
           return;
         };
@@ -39,11 +44,12 @@
 <template>
 
   <input 
-  @keyup.enter="startSearch(searchValue)" 
+  @keyup.enter="startSearch(searchValue)"
   v-model="searchValue"
   type="text" 
   />
   <button @click="startSearch(searchValue)">Cerca</button>
+
 
   <div class="container">
 
