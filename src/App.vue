@@ -63,7 +63,7 @@
           </span>
           <span :class="'fi fi-'+titles.getLangFlag(title.ogLan)"></span> 
         </li>
-        <li>Voto: {{ title.vote }}/10 -> 
+        <li>Voto:
           <font-awesome-icon v-if="titles.getStars(title.vote) >= 1" v-for="i in titles.getStars(title.vote)" icon="fa-solid fa-star" />
           <font-awesome-icon v-if="titles.getStars(title.vote) <= 0" icon="fa-regular fa-star" />
         </li>
