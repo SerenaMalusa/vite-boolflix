@@ -60,11 +60,13 @@ export const titles = reactive ({
                 return {
                     type: 'Film',
                     title: result.title,
-                    og_title: result.original_title,
-                    og_lan: result.original_language,
-                    og_country: result.origin_country,
+                    ogTitle: result.original_title,
+                    ogLan: result.original_language,
+                    ogCountry: result.origin_country,
                     vote: result.vote_average.toFixed(1),
-                    release_year: result.release_date.substr(0,4),
+                    releaseYear: result.release_date.substr(0,4),
+                    backdrop: result.backdrop_path,
+                    poster: result.poster_path,
                 }
 
             // if it's a serie
@@ -72,10 +74,12 @@ export const titles = reactive ({
                 return {
                     type: 'Serie',
                     title: result.name,
-                    og_title: result.original_name,
-                    og_lan: result.original_language,
+                    ogTitle: result.original_name,
+                    ogLan: result.original_language,
                     vote: result.vote_average.toFixed(1),
-                    release_year: result.first_air_date.substr(0,4),
+                    releaseYear: result.first_air_date.substr(0,4),
+                    backdrop: result.backdrop_path,
+                    poster: result.poster_path,
                 }
             }
 
@@ -92,7 +96,7 @@ export const titles = reactive ({
     },
     // function to get the flag that corresponds to the original language
     getLangFlag(ogLang) {
-        
+
         // handle the differences with the library
         if (ogLang == 'en') return 'gb';
         if (ogLang == 'ja') return 'jp';
@@ -103,4 +107,9 @@ export const titles = reactive ({
         return ogLang;
 
     },
+
+    getImgUrl(imgUrl) {
+        const url = new URL ( 'https://image.tmdb.org/t/p/' + 'w342' + imgUrl , import.meta.url);
+        return url;
+    }
 });

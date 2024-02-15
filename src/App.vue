@@ -56,15 +56,18 @@
       <ul v-for="title in titles.titlesList">
         <li>Tipo: {{ title.type }}</li>
         <li>Titolo: {{ title.title }} </li>
-        <li>Titolo Originale: {{ title.og_title }} </li>
+        <li>Titolo Originale: {{ title.ogTitle }} </li>
         <li>
           <span>
-            Lingua Originale: {{ title.og_lan + ' '}} 
+            Lingua Originale: {{ title.ogLan + ' '}} 
           </span>
-          <span :class="'fi fi-'+titles.getLangFlag(title.og_lan)"></span> 
+          <span :class="'fi fi-'+titles.getLangFlag(title.ogLan)"></span> 
         </li>
         <li>Voto: {{ title.vote }}/10</li>
-        <li>Anno di Uscita: {{ title.release_year || 'unknonw' }}</li>
+        <li>Anno di Uscita: {{ title.releaseYear || 'unknonw' }}</li>
+        <li>
+          <img :src="titles.getImgUrl(title.poster)" alt="#">
+        </li>
       </ul>
     </div>
 
