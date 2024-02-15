@@ -12,6 +12,26 @@
         searchValue: '',
       }
     },
+    methods: {
+      // function that starts the research and handle the digitation's errors
+      startSearch(value) {
+
+        // split the value by the spaces
+        const valueWords = value.trim().split(' ');
+        // console.log(valueWords);
+
+        // if the user did not write anything or they wrote only spaces
+        if (!value || valueWords.length <= 1 ) {
+          // do nothing
+          return;
+        };
+
+        // start the research of movies and series
+        titles.fetchTitles(titles.movieApiUri,value);
+        titles.fetchTitles(titles.tvShowApiUri,value);
+
+      },
+    },
   }
 
 </script>
@@ -19,15 +39,11 @@
 <template>
 
   <input 
-  @keyup.enter="titles.fetchTitles('apiUri',searchValue);" 
+  @keyup.enter="startSearch(searchValue)" 
   v-model="searchValue"
   type="text" 
   />
-  <button 
-  @click="titles.fetchTitles(titles.movieApiUri,searchValue); titles.fetchTitles(titles.tvShowApiUri,searchValue);"
-  >
-  Cerca
-  </button>
+  <button @click="startSearch(searchValue)">Cerca</button>
 
   <div class="container">
 
