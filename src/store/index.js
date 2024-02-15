@@ -107,9 +107,14 @@ export const titles = reactive ({
         return ogLang;
 
     },
-
+    // function that creates the dynamic url for the images
     getImgUrl(imgUrl) {
-        const url = new URL ( 'https://image.tmdb.org/t/p/' + 'w342' + imgUrl , import.meta.url);
-        return url;
+        const imgSize = 'w342';
+        return new URL ( 'https://image.tmdb.org/t/p/' + imgSize + imgUrl , import.meta.url);  
+    },
+
+    getStars(vote) {
+        const number = parseFloat(vote)
+        return Math.round(number / 2);
     }
 });
