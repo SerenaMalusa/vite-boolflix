@@ -63,7 +63,7 @@
           </span>
           <span :class="'fi fi-'+titles.getLangFlag(title.ogLan)"></span> 
         </li>
-        <li>Voto: {{ title.vote }}/10 -> {{ titles.getStars(title.vote) }}/5 stelle</li>
+        <li>Voto: {{ title.vote }}/10 -> {{ titles.getStars(title.vote) }}/5 <font-awesome-icon icon="fa-solid fa-star" /></li>
         <li>Anno di Uscita: {{ title.releaseYear || 'unknonw' }}</li>
         <li>
           <img :src="titles.getImgUrl(title.poster)" alt="#">

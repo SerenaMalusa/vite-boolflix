@@ -101,6 +101,7 @@ export const titles = reactive ({
         if (ogLang == 'en') return 'gb';
         if (ogLang == 'ja') return 'jp';
         if (ogLang == 'ko') return 'kr';
+        if (ogLang == 'zh') return 'cn';
         // console.log(ogLang);
 
         // or just return the og_lang value
@@ -114,7 +115,6 @@ export const titles = reactive ({
     },
 
     getStars(vote) {
-        const number = parseFloat(vote)
-        return Math.round(number / 2);
+        return Math.round(parseFloat(vote) / 2);
     }
 });
