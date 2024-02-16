@@ -58,18 +58,16 @@
         <li>Titolo: {{ title.title }} </li>
         <li>Titolo Originale: {{ title.ogTitle }} </li>
         <li>
-          <span>
-            Lingua Originale: {{ title.ogLan + ' '}} 
-          </span>
+          <span>Lingua Originale: {{ title.ogLan + ' '}}</span>
           <span :class="'fi fi-'+titles.getLangFlag(title.ogLan)"></span> 
         </li>
         <li>Voto:
           <font-awesome-icon v-for="i in titles.getStars(title.vote)" icon="fa-solid fa-star" />
           <font-awesome-icon v-for="i in (5 - titles.getStars(title.vote))" icon="fa-regular fa-star" />
         </li>
-        <li>Anno di Uscita: {{ title.releaseYear || 'unknonw' }}</li>
+        <li>Anno di Uscita: {{ title.releaseYear || 'unknown' }}</li>
         <li>
-          <img :src="titles.getImgUrl(title.poster)" alt="#">
+          <img :src="titles.getImgUrl(title.poster)" :alt="title.ogTitle">
         </li>
       </ul>
     </div>
