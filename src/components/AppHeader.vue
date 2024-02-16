@@ -2,7 +2,7 @@
 
     // import components
     import AppSearchbar from './AppSearchbar.vue';
-    
+
     export default {
         components: {
             AppSearchbar,
@@ -11,9 +11,9 @@
 </script>
 
 <template>
-    <div class="px-3 d-flex justify-content-between align-items-center">
+    <div class="px-3 d-flex justify-content-between align-items-center bg-secondary">
 
-        <div class="logo text-uppercase">Boolflix</div>
+        <div class="logo text-uppercase text-primary">Boolflix</div>
 
         <app-searchbar />
 
@@ -29,17 +29,9 @@
 // IMPORT GOOGLE FONT Fjalla One
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
 
-div {
-
-    background-color: black;
     .logo {
-      font-family: "Fjalla One", sans-serif;
       font-size: 2rem;
       font-weight: 600;
-      font-style: normal;
-      color: red;
     }
-
-}
 
 </style>

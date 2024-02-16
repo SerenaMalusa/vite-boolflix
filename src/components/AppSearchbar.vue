@@ -54,7 +54,9 @@
     // import varibles and mixins
     @use '../styles/partials/variables.scss' as *;
     @use '../styles/partials/mixins.scss' as *;
-    // IMPORT GOOGLE FONT Fjalla One
-    @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+ 
+    input {
+        width: 400px;
+    }
 
 </style>

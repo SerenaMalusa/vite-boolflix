@@ -6,8 +6,9 @@
 @import "bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
-// $body-bg: #000;
-// $body-color: #111;
+$primary: #e50913;
+$secondary: #000000;
+$info: #f7f3f3;
 
 // 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
 @import "../node_modules/bootstrap/scss/variables";
@@ -19,9 +20,8 @@
 // 6. Optionally include any other parts as needed
 @import "../node_modules/bootstrap/scss/utilities";
 @import "../node_modules/bootstrap/scss/utilities/api";
-@import "../node_modules/bootstrap/scss/containers";
 @import "../node_modules/bootstrap/scss/grid";
-
+@import "../node_modules/bootstrap/scss/buttons";
 
 // RESET AND GENERAL RULES
 * {
@@ -31,7 +31,8 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Fjalla One", sans-serif;
+    font-style: normal;
 }
 
 img {
@@ -41,6 +42,19 @@ img {
 a {
     text-decoration: none;
     color: inherit;
+}
+
+button,
+input {
+    margin: 0 0 0 $base-space;
+    border: 1px solid $info;
+    padding: 3px 6px;
+    font-family: inherit;
+}
+
+button {
+    background-color: $primary;
+    color: $secondary;
 }
 
 // DEBUG

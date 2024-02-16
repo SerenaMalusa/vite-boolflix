@@ -1,7 +1,5 @@
 <script>
 
-  // import axios
-  import axios from 'axios';
   // import components
   import AppHeader from './components/AppHeader.vue';
   // import the global state
@@ -60,7 +58,6 @@
 
     </div>
   </app-header>
-
 
   <div class="container">
 
