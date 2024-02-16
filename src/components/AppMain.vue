@@ -1,11 +1,33 @@
 <script>
+
+    // import variables from store
+    import { titles } from '../store/index';
+    // import components
+    import AppCard from './AppCard.vue';
+
     export default {
-        
+        data() {
+            return {
+                titles,
+            }
+        },
+        components: {
+            AppCard,
+        },  
+
     }
 </script>
 
 <template>
     <div>
+
+        <div class="p-3">
+            <div class="row">
+
+                <app-card v-for="title in titles.titlesList" :key="title.id" />
+
+            </div>
+        </div>
        
     </div>
 </template>

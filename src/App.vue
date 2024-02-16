@@ -18,13 +18,15 @@
       AppHeader,
       AppMain
     },
-
+    created() {
+      console.log('hello world');
+    },
   }
 
 </script>
 
 <template>
-
+  
   <app-header id="header">
     <div>
 
@@ -37,8 +39,8 @@
 
     </div>
   </app-header>
-
-  <app-main />
+  
+  <app-main id="main"/>
 
   <div class="container">
 

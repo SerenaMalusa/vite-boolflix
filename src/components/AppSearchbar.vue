@@ -12,7 +12,7 @@
         },
         methods: {
             // function that starts the research and handle the digitation's errors
-            startSearch(value) {
+            startSearch() {
 
                 // empty the arrays
                 titles.titlesList = [];
@@ -20,18 +20,18 @@
                 titles.tvShowList = [];
 
                 // split the value by the spaces
-                const valueWords = value.trim().split(' ');
+                const valueWords = this.searchValue.trim().split(' ');
                 // console.log(valueWords);
 
                 // if the user did not write anything or they wrote only spaces
-                if (!value || valueWords[0] == '' && valueWords.length == 1) {
+                if (!this.searchValue || valueWords[0] == '' && valueWords.length == 1) {
                 // do nothing
                 return;
                 };
-
+                
                 // start the research of movies and series
-                titles.fetchTitles(titles.movieApiUri,value);
-                titles.fetchTitles(titles.tvShowApiUri,value);
+                titles.fetchTitles(titles.movieEndPoint,this.searchValue);
+                titles.fetchTitles(titles.tvShowEndPoint,this.searchValue);
 
             },
         },
@@ -41,11 +41,11 @@
 <template>
     <div>
         <input 
-        @keyup.enter="startSearch(searchValue)"
+        @keyup.enter="startSearch()"
         v-model="searchValue"
         type="text" 
         />
-        <button @click="startSearch(searchValue)">Cerca</button>
+        <button @click="startSearch()">Cerca</button>
     </div>
 </template>
 

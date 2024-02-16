@@ -11,11 +11,11 @@ export const titles = reactive ({
     titlesList: [],
 
     // API endpoints
-    movieApiUri: 'https://api.themoviedb.org/3/search/movie?',
-    tvShowApiUri: 'https://api.themoviedb.org/3/search/tv?',
+    movieEndPoint: 'https://api.themoviedb.org/3/search/movie?',
+    tvShowEndPoint: 'https://api.themoviedb.org/3/search/tv?',
 
     // function that calls the API with axios
-    fetchTitles(apiUri,searchParam) {
+    fetchTitles(endPoint,searchParam) {
 
         // empty the arrays
         this.titlesList = [];
@@ -23,7 +23,7 @@ export const titles = reactive ({
         this.tvShowList = [];
 
         // axios api call to the selected API uri
-        axios.get(apiUri, {
+        axios.get(endPoint, {
 
             // set the parameters
             params: {
@@ -34,18 +34,23 @@ export const titles = reactive ({
 
         // when the response is ready     
         }).then((res) => {
-
+            
             // add it to titleList
             this.addToTitlesList(res.data.results);
-
+            
             // add it to the array related to your research
-            if (apiUri.includes('movie?')) this.movieList = res.data.results;
-            if (apiUri.includes('tv?')) this.tvShowList = res.data.results;
+            if (endPoint.includes('movie?')) this.movieList = res.data.results;
+            if (endPoint.includes('tv?')) this.tvShowList = res.data.results;
 
         })
         .catch((error) => {
-            console.log(error);
-            alert('Server error');
+
+            // this.error = {
+            //     status: true,
+            //     message: 'Server error',
+            // }
+            // console.log(error);
+            // alert(this.error.message);
         });
     },
 
@@ -59,6 +64,7 @@ export const titles = reactive ({
             if (result.title) {
                 return {
                     type: 'Film',
+                    id: result.id,
                     title: result.title,
                     ogTitle: result.original_title,
                     ogLan: result.original_language,
@@ -73,6 +79,7 @@ export const titles = reactive ({
             } else if (result.name) {
                 return {
                     type: 'Serie',
+                    id: result.id,
                     title: result.name,
                     ogTitle: result.original_name,
                     ogLan: result.original_language,
@@ -118,3 +125,8 @@ export const titles = reactive ({
         return Math.round(parseFloat(vote) / 2);
     }
 });
+
+// export const error = reactive ({
+//     status: false,
+//     message: '',    
+// });
