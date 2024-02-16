@@ -2,6 +2,8 @@
 
   // import components
   import AppHeader from './components/AppHeader.vue';
+  import AppMain from './components/AppMain.vue';
+
   // import the global state
   import { titles } from './store';
 
@@ -14,32 +16,9 @@
     },
     components: {
       AppHeader,
+      AppMain
     },
-    methods: {
-      // function that starts the research and handle the digitation's errors
-      startSearch(value) {
 
-        // empty the arrays
-        titles.titlesList = [];
-        titles.movieList = [];
-        titles.tvShowList = [];
-
-        // split the value by the spaces
-        const valueWords = value.trim().split(' ');
-        // console.log(valueWords);
-
-        // if the user did not write anything or they wrote only spaces
-        if (!value || valueWords[0] == '' && valueWords.length == 1) {
-          // do nothing
-          return;
-        };
-
-        // start the research of movies and series
-        titles.fetchTitles(titles.movieApiUri,value);
-        titles.fetchTitles(titles.tvShowApiUri,value);
-
-      },
-    },
   }
 
 </script>
@@ -58,6 +37,8 @@
 
     </div>
   </app-header>
+
+  <app-main />
 
   <div class="container">
 
