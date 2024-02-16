@@ -26,7 +26,7 @@
             </div>
         </figure>
 
-        <!-- <div class="card-content text-center debug">
+        <div class="card-content text-center debug">
 
             <div>Tipo: {{ title.type }}</div>
             <div>Titolo: {{ title.title }} </div>
@@ -41,7 +41,7 @@
             </div>
             <div>Anno di Uscita: {{ title.releaseYear || 'unknown' }}</div>
 
-        </div> -->
+        </div>
      
         
     </div>
@@ -74,8 +74,17 @@
                 font-size: 4rem;
             }
         }
-
         
+    }
+
+    .card-content {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
 </style>
