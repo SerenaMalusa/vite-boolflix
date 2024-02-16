@@ -2,6 +2,8 @@
 
   // import axios
   import axios from 'axios';
+  // import components
+  import AppHeader from './components/AppHeader.vue';
   // import the global state
   import { titles } from './store';
 
@@ -11,6 +13,9 @@
         titles,      
         searchValue: '',
       }
+    },
+    components: {
+      AppHeader,
     },
     methods: {
       // function that starts the research and handle the digitation's errors
@@ -43,12 +48,19 @@
 
 <template>
 
-  <input 
-  @keyup.enter="startSearch(searchValue)"
-  v-model="searchValue"
-  type="text" 
-  />
-  <button @click="startSearch(searchValue)">Cerca</button>
+  <app-header id="header">
+    <div>
+
+      <input 
+      @keyup.enter="startSearch(searchValue)"
+      v-model="searchValue"
+      type="text" 
+      />
+      <button @click="startSearch(searchValue)">Cerca</button>
+
+    </div>
+  </app-header>
+
 
   <div class="container">
 
@@ -80,15 +92,13 @@
 
   // import file general.scss
   @use './styles/general.scss';
+  // import mixins and variables
+  @use './styles/partials/mixins.scss' as *;
+  @use './styles/partials/variables.scss' as *;
 
-  .container {
+  #header {
+    height: $header-h;
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-
-    div {
-      width: 50%;
-    }
   }
 
   .fa-star {
