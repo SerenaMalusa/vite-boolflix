@@ -26,7 +26,7 @@
             </div>
         </figure>
 
-        <div class="card-content text-center">
+        <div class="card-content text-center see-trough">
 
             <div>Tipo: {{ title.type }}</div>
             <div>Titolo: {{ title.title }} </div>
@@ -47,6 +47,10 @@
 </template>
 
 <style lang="scss" scoped>
+
+    // import mixins and variables
+    @use '../styles/partials/mixins.scss' as *;
+    @use '../styles/partials/variables.scss' as *;
 
     div {
 
@@ -73,7 +77,8 @@
     
                 display: flex;
                 flex-direction: column;
-                justify-content: space-around;
+                justify-content: center;
+                gap: calc($base-space * 4);
     
                 .icon {
                     font-size: 4rem;
@@ -90,6 +95,14 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+        }
+
+        .opaque {
+            opacity: 1;
+        }
+
+        .see-trough {
+            opacity: 0;
         }
         
     }
