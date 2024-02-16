@@ -26,7 +26,7 @@
             </div>
         </figure>
 
-        <div class="card-content text-center debug">
+        <div class="card-content text-center">
 
             <div>Tipo: {{ title.type }}</div>
             <div>Titolo: {{ title.title }} </div>
@@ -41,50 +41,58 @@
             </div>
             <div>Anno di Uscita: {{ title.releaseYear || 'unknown' }}</div>
 
-        </div>
-     
+        </div>     
         
     </div>
 </template>
 
 <style lang="scss" scoped>
 
-    figure {
-        width: 100%;
-        height: 100%;
+    div {
 
-        img {
-            object-fit: cover;
-        }
+        position: relative;
 
-        img,
-        div {
+        figure {
             width: 100%;
-            height: 100%;            
+            height: 100%;
+
+            position: absolute;
+    
+            img {
+                object-fit: cover;
+            }
+    
+            img,
+            div {
+                width: 100%;
+                height: 100%;            
+            }
+    
+            div {
+                font-size: 1.5rem;
+    
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+    
+                .icon {
+                    font-size: 4rem;
+                }
+            }
+            
         }
-
-        div {
-            font-size: 1.5rem;
-
+    
+        .card-content {
+            width: 100%;
+            height: 100%;
+    
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
-
-            .icon {
-                font-size: 4rem;
-            }
+            justify-content: center;
+            align-items: center;
         }
         
     }
 
-    .card-content {
-        width: 100%;
-        height: 100%;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
 
 </style>
