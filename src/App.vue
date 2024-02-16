@@ -42,7 +42,7 @@
   
   <app-main id="main"/>
 
-  <div class="container">
+  <!-- <div class="container">
 
     <div> 
       <ul v-for="title in titles.titlesList">
@@ -64,7 +64,7 @@
       </ul>
     </div>
 
-  </div>  
+  </div>   -->
  
 </template>
 

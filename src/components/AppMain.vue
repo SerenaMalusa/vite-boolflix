@@ -24,7 +24,11 @@
         <div class="p-3">
             <div class="row">
 
-                <app-card v-for="title in titles.titlesList" :key="title.id" />
+                <app-card 
+                v-for="title in titles.titlesList" 
+                :key="title.id"
+                :title="title"
+                class="col-4" />
 
             </div>
         </div>
