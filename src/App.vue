@@ -28,7 +28,6 @@
 <template>
   
   <app-header id="header">
-    <div>
 
       <!-- <input 
       @keyup.enter="startSearch(searchValue)"
@@ -37,7 +36,7 @@
       />
       <button @click="startSearch(searchValue)">Cerca</button> -->
 
-    </div>
+    
   </app-header>
   
   <app-main id="main"/>

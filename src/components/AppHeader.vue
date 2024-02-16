@@ -11,13 +11,15 @@
 </script>
 
 <template>
-    <div class="px-3 d-flex justify-content-between align-items-center bg-secondary">
-
-        <div class="logo text-uppercase text-primary">Boolflix</div>
-
-        <app-searchbar />
-
-        <!-- <slot></slot> -->
+    <div class="bg-secondary">
+        <div class="container">
+    
+            <div class="logo text-uppercase text-primary">Boolflix</div>
+    
+            <app-searchbar />
+    
+            <!-- <slot></slot> -->
+        </div>
     </div>
 </template>
 
@@ -29,6 +31,11 @@
 // IMPORT GOOGLE FONT Fjalla One
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
 
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
     .logo {
       font-size: 2rem;
       font-weight: 600;
