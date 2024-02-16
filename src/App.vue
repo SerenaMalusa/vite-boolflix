@@ -51,12 +51,12 @@
   <app-header id="header">
     <div>
 
-      <input 
+      <!-- <input 
       @keyup.enter="startSearch(searchValue)"
       v-model="searchValue"
       type="text" 
       />
-      <button @click="startSearch(searchValue)">Cerca</button>
+      <button @click="startSearch(searchValue)">Cerca</button> -->
 
     </div>
   </app-header>

@@ -1,6 +1,12 @@
 <script>
+
+    // import components
+    import AppSearchbar from './AppSearchbar.vue';
+    
     export default {
-        
+        components: {
+            AppSearchbar,
+        }
     }
 </script>
 
@@ -8,8 +14,10 @@
     <div class="px-3 d-flex justify-content-between align-items-center">
 
         <div class="logo text-uppercase">Boolflix</div>
-        <slot></slot>
 
+        <app-searchbar />
+
+        <!-- <slot></slot> -->
     </div>
 </template>
 
