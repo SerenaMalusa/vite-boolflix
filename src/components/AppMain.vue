@@ -25,7 +25,7 @@
 
             <h2 class="mb-3">Ecco i risultati della tua ricerca:</h2>
 
-            <div class="row gx-2">
+            <div class="row row-gap-3">
                 
                 <div v-for="title in titles.titlesList" class="column">
                 
@@ -47,7 +47,13 @@
     .container {
         margin-top: 20px;
         .column {
-        width: calc(100% / 5);
+            width: calc(100% / 5);
+
+            .card {
+                width: 100%;
+                aspect-ratio: 5/7;
+            }
+            
         }
 
     }
