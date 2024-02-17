@@ -16,6 +16,8 @@
             startSearch() {
                 // change the switch variables that changes the content of AppMain
                 loader.isFirstLoad = false;
+                // start loading
+                loader.isLoading = true;
 
                 // empty the arrays
                 titles.titlesList = [];

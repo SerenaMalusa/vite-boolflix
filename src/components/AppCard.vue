@@ -2,12 +2,13 @@
 
     // import variables from store
     import axios from 'axios';
-    import { titles } from '../store/index';
+    import { titles, loader } from '../store/index';
 
     export default {
         data() {
             return {
                 titles,
+                loader,
                 cast: [],
             }
         },
@@ -15,9 +16,11 @@
             title: Object,
         },
         methods: {
+            // function to do an axios call to find the first 5 actors
             fetchActors() {
+                // if it's a movie
                 if (this.title.type == 'Movie') {
-
+                    //axios call with movie endpoint and id
                     axios.get('https://api.themoviedb.org/3/movie/'+ this.title.id +'/credits', {
                         params: {
                             api_key: '875b204ed440a701c5a21db41f3ee0a2',
@@ -25,13 +28,15 @@
                         }
                     }).then((res) => {                    
                         const result = res.data.cast;
+                        // cicle the first 5 and push them in cast
                         for (let i = 0; i < 5; i++) {
                             this.cast.push(result[i].name);
                         };
                     })
 
+                // if it's a show
                 } else if (this.title.type == 'Show') {
-
+                    // axios call with show endpoint and id
                     axios.get('https://api.themoviedb.org/3/tv/'+ this.title.id +'/credits', {
                         params: {
                             api_key: '875b204ed440a701c5a21db41f3ee0a2',
@@ -39,6 +44,7 @@
                         }
                     }).then((res) => {                    
                         const result = res.data.cast;
+                        // cicle the first 5 and push them in cast
                         for (let i = 0; i < 5; i++) {
                             this.cast.push(result[i].name);
                         };
@@ -48,7 +54,10 @@
             }
         },
         mounted() {
+            //call funtion to find first 5 actors names
             this.fetchActors();
+            // stop loading
+            loader.isLoading = false;
         },
     }
 </script>
