@@ -28,13 +28,16 @@
                         }
                     }).then((res) => {                    
                         const result = res.data.cast;   
-                        console.log(this.title.title, result);
                         // cicle the first 5 and push them in cast
-                        if (result.length > 0 ) {
+                        if (result.length < 5 ) {
+                            for (let i = 0; i < result.length; i++) {
+                                this.cast.push(result[i].name);
+                            };
+                        } else {
                             for (let i = 0; i < 5; i++) {
                                 this.cast.push(result[i].name);
                             };
-                        };
+                        }
                     })
 
                 // if it's a show
@@ -47,12 +50,16 @@
                         }
                     }).then((res) => {                    
                         const result = res.data.cast;
-                        if (result.length > 0 ) {
-                            // cicle the first 5 and push them in cast
+                        // cicle the first 5 and push them in cast
+                        if (result.length < 5 ) {
+                            for (let i = 0; i < result.length; i++) {
+                                this.cast.push(result[i].name);
+                            };
+                        } else {
                             for (let i = 0; i < 5; i++) {
                                 this.cast.push(result[i].name);
                             };
-                        };
+                        }
                     })
 
                 }
