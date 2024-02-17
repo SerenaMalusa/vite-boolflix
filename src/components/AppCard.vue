@@ -69,18 +69,18 @@
                 <span :class="'fi fi-'+titles.getLangFlag(title.ogLan)"></span> 
             </div>
             <div v-if="title.title != title.ogTitle">Titolo Originale: {{ title.ogTitle }} </div>
-            <div>Anno di Uscita: {{ title.releaseYear || 'unknown' }}</div>
+            <div v-if="title.releaseYear">Anno di Uscita: {{ title.releaseYear }}</div>
             <div>Voto:
                 <font-awesome-icon v-for="i in titles.getStars(title.vote)" icon="fa-solid fa-star" />
                 <font-awesome-icon v-for="i in (5 - titles.getStars(title.vote))" icon="fa-regular fa-star" />
             </div>
             <hr class="text-primary my-1" />
             <div class="card-overview">
-            <div v-if="cast.length > 0" class="cast mb-1">
-                Cast:
-                <span v-for="(actor,i) in cast">{{ (i != cast.length - 1) ? actor+', ' : actor+'...' }}</span>
-            </div>
-                <p>{{ title.overview }}</p>
+                <div v-if="cast.length > 0" class="cast mb-1">
+                    Cast:
+                    <span v-for="(actor,i) in cast">{{ (i != cast.length - 1) ? actor+', ' : actor+'...' }}</span>
+                </div>
+                <p v-if="title.overview">{{ title.overview }}</p>
             </div>
 
         </div>     
