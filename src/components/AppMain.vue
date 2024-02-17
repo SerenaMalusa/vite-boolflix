@@ -30,7 +30,7 @@
                 this.areArrowsVisible = true;
                 setTimeout(() => {
                     this.areArrowsVisible = false;
-                }, 1000 * 60);
+                }, 1000 * 60 * 2);
             },
         },
 
