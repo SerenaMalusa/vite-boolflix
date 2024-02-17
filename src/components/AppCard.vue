@@ -29,16 +29,12 @@
                     }).then((res) => {                    
                         const result = res.data.cast;   
                         // cicle the first 5 and push them in cast
-                        if (result.length < 5 ) {
-                            for (let i = 0; i < result.length; i++) {
-                                this.cast.push(result[i].name);
-                            };
-                        } else {
-                            for (let i = 0; i < 5; i++) {
-                                this.cast.push(result[i].name);
-                            };
-                        }
-                    })
+                        let i = 0;
+                        while (i < 5 && i < result.lenght) {
+                            this.cast.push(result[i].name);                            
+                            i++;
+                        };
+                    });
 
                 // if it's a show
                 } else if (this.title.type == 'Show') {
@@ -51,16 +47,12 @@
                     }).then((res) => {                    
                         const result = res.data.cast;
                         // cicle the first 5 and push them in cast
-                        if (result.length < 5 ) {
-                            for (let i = 0; i < result.length; i++) {
-                                this.cast.push(result[i].name);
-                            };
-                        } else {
-                            for (let i = 0; i < 5; i++) {
-                                this.cast.push(result[i].name);
-                            };
-                        }
-                    })
+                        let i = 0;
+                        while (i < 5 && i < result.lenght) {
+                            this.cast.push(result[i].name);                            
+                            i++;
+                        };
+                    });
 
                 }
             }
