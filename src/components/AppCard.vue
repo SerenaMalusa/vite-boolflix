@@ -16,7 +16,7 @@
 </script>
 
 <template>
-    <div class="debug">
+    <div>
 
         <figure>
             <img v-if="title.poster" :src="titles.getImgUrl(title.poster)" :alt="title.ogTitle">
@@ -26,20 +26,24 @@
             </div>
         </figure>
 
-        <div class="card-content text-center">
+        <div class="card-content p-2 text-info">
 
-            <div>Tipo: {{ title.type }}</div>
-            <div>Titolo: {{ title.title }} </div>
-            <div>Titolo Originale: {{ title.ogTitle }} </div>
+            <div class="card-title">{{ title.type }}</div>
+            <div class="card-title">{{ title.title }} </div>
             <div>
-            <span>Lingua Originale: {{ title.ogLan + ' '}}</span>
-            <span :class="'fi fi-'+titles.getLangFlag(title.ogLan)"></span> 
+                <span>Lingua Originale: {{ title.ogLan + ' '}}</span>
+                <span :class="'fi fi-'+titles.getLangFlag(title.ogLan)"></span> 
             </div>
-            <div>Voto:
-            <font-awesome-icon v-for="i in titles.getStars(title.vote)" icon="fa-solid fa-star" />
-            <font-awesome-icon v-for="i in (5 - titles.getStars(title.vote))" icon="fa-regular fa-star" />
-            </div>
+            <div v-if="title.title != title.ogTitle">Titolo Originale: {{ title.ogTitle }} </div>
             <div>Anno di Uscita: {{ title.releaseYear || 'unknown' }}</div>
+            <div>Voto:
+                <font-awesome-icon v-for="i in titles.getStars(title.vote)" icon="fa-solid fa-star" />
+                <font-awesome-icon v-for="i in (5 - titles.getStars(title.vote))" icon="fa-regular fa-star" />
+            </div>
+            <hr class="text-primary my-1" />
+            <div class="card-overview">
+                <p>{{ title.overview }}</p>
+            </div>
 
         </div>     
         
@@ -53,7 +57,6 @@
     @use '../styles/partials/variables.scss' as *;
 
     .card {
-
         position: relative;
 
         figure {
@@ -110,13 +113,27 @@
         }
     
         .card-content {
+            border: 1px solid red;
             width: 100%;
             height: 100%;
+            font-size: 0.8rem;
     
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;            
+            justify-content: flex-start;
+
+            .card-title {
+                font-size: 0.9rem;
+            }
+
+            .fa-star {
+                color: goldenrod;
+            }
+
+            .card-overview {
+                white-space: wrap;
+                overflow: auto;
+            }
         }
         
     }

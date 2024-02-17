@@ -80,8 +80,9 @@
     display: flex;
   }
 
-  .fa-star {
-    color: goldenrod;
+  #main {
+    height: calc(100% - $header-h);
+    background: linear-gradient(to bottom, rgb(65, 65, 68) 0%, rgba(34,34,37,1) 10%, rgba(0,0,11,1) 100%);
   }
 
 </style>

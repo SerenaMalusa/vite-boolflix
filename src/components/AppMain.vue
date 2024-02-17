@@ -20,7 +20,7 @@
 </script>
 
 <template>
-    <div>
+    <div class="text-primary">
 
         <div v-if="loader.isFirstLoad" class="container">
             <h2 class="mb-3">Benvenuto su Boolflix!</h2>
@@ -31,7 +31,7 @@
 
             <h2 class="mb-3">Ecco i risultati della tua ricerca:</h2>
 
-            <div class="row row-gap-3">
+            <div class="row row-gap-4">
                 
                 <div v-for="title in titles.titlesList" class="column">
                 
@@ -51,7 +51,7 @@
 
 <style lang="scss" scoped>
     .container {
-        margin-top: 20px;
+        padding: 20px 0;
         .column {
             width: calc(100% / 5);
 

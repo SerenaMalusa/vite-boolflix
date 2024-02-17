@@ -63,7 +63,7 @@ export const titles = reactive ({
             // if it'a a movie
             if (result.title) {
                 return {
-                    type: 'Film',
+                    type: 'Movie',
                     id: result.id,
                     title: result.title,
                     ogTitle: result.original_title,
@@ -73,12 +73,13 @@ export const titles = reactive ({
                     releaseYear: result.release_date.substr(0,4),
                     backdrop: result.backdrop_path,
                     poster: result.poster_path,
+                    overview: result.overview,
                 }
 
             // if it's a serie
             } else if (result.name) {
                 return {
-                    type: 'Serie',
+                    type: 'Show',
                     id: result.id,
                     title: result.name,
                     ogTitle: result.original_name,
@@ -87,6 +88,7 @@ export const titles = reactive ({
                     releaseYear: result.first_air_date.substr(0,4),
                     backdrop: result.backdrop_path,
                     poster: result.poster_path,
+                    overview: result.overview,
                 }
             }
 
