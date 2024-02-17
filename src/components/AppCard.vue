@@ -18,43 +18,28 @@
         methods: {
             // function to do an axios call to find the first 5 actors
             fetchActors() {
-                // if it's a movie
-                if (this.title.type == 'Movie') {
-                    //axios call with movie endpoint and id
-                    axios.get('https://api.themoviedb.org/3/movie/'+ this.title.id +'/credits', {
-                        params: {
-                            api_key: '875b204ed440a701c5a21db41f3ee0a2',
-                            language: 'it-IT',
-                        }
-                    }).then((res) => {                    
-                        const result = res.data.cast;   
-                        // cicle the first 5 and push them in cast
-                        let i = 0;
-                        while (i < 5 && i < result.lenght) {
-                            this.cast.push(result[i].name);                            
-                            i++;
-                        };
-                    });
 
-                // if it's a show
-                } else if (this.title.type == 'Show') {
-                    // axios call with show endpoint and id
-                    axios.get('https://api.themoviedb.org/3/tv/'+ this.title.id +'/credits', {
-                        params: {
-                            api_key: '875b204ed440a701c5a21db41f3ee0a2',
-                            language: 'it-IT',
-                        }
-                    }).then((res) => {                    
-                        const result = res.data.cast;
-                        // cicle the first 5 and push them in cast
-                        let i = 0;
-                        while (i < 5 && i < result.lenght) {
-                            this.cast.push(result[i].name);                            
-                            i++;
-                        };
-                    });
+                // change the endpoint based on the title type
+                let apiType = (this.title.type == 'Movie') ? 'movie' : 'tv';
 
-                }
+                //axios call with movie endpoint and id
+                axios.get(`https://api.themoviedb.org/3/${apiType}/`+ this.title.id +'/credits', {
+                    params: {
+                        api_key: '875b204ed440a701c5a21db41f3ee0a2',
+                        language: 'it-IT',
+                    }
+                }).then((res) => {                   
+                     
+                    const result = res.data.cast;   
+                    // cicle the first 5 and push them in cast
+                    let i = 0;
+                    while (i < 5 && i < result.length) {
+                        this.cast.push(result[i].name);
+                        i++;
+                    };
+
+                });
+
             }
         },
         mounted() {
