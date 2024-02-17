@@ -10,6 +10,7 @@
             return {
                 titles,
                 loader,
+                areArrowsVisible: false,
             }
         },
         components: {
@@ -24,7 +25,13 @@
             showPrevTitle() {
                 titles.titlesList.unshift(titles.titlesList.at(-1));
                 titles.titlesList.pop();
-            }  
+            },
+            showArrows() {
+                this.areArrowsVisible = true;
+                setTimeout(() => {
+                    this.areArrowsVisible = false;
+                }, 1000 * 60);
+            },
         },
 
     }
@@ -42,7 +49,7 @@
 
             <h2 class="mb-3">Ecco i risultati della tua ricerca:</h2>
 
-            <div class="row flex-nowrap overflow-hidden pb-2">
+            <div @mouseenter="showArrows()" class="row flex-nowrap overflow-hidden pb-2">
                 
                 <div v-for="title in titles.titlesList" class="column">
                 
@@ -52,16 +59,17 @@
                     class="card"
                     />
 
-                </div>   
-                
-                <span @click="showNextTitle()" class="arrowNext">
-                    <font-awesome-icon class="text-danger" icon="fa-solid fa-chevron-right" />
-                </span>
-                <span @click="showPrevTitle()" class="arrowPrev">
-                    <font-awesome-icon class="text-danger" icon="fa-solid fa-chevron-left" />
-                </span>
+                </div>                   
 
             </div>
+
+            <span @click="showNextTitle()" :class="areArrowsVisible ? 'show-arrows' : ''" class="arrowNext">
+                    <font-awesome-icon class="text-danger" icon="fa-solid fa-chevron-right" />
+            </span>
+            <span @click="showPrevTitle()" :class="areArrowsVisible ? 'show-arrows' : ''" class="arrowPrev">
+                    <font-awesome-icon class="text-danger" icon="fa-solid fa-chevron-left" />
+            </span>
+
         </div>
        
     </div>
@@ -70,48 +78,37 @@
 <style lang="scss" scoped>
     .container {
         padding: 20px 0;
-
-        .row{
-            position: relative;
-
+        position: relative;        
             
-            .arrowNext ,
-            .arrowPrev {
-                width: 50px;
-                font-size: 2.5rem;
-                position: absolute;
-                top: 50%;
-                transform: translate(-25%, -50%);
-                opacity: 0;
-                transition: opacity 0.5s;
-                transition-timing-function: ease-in;
-            }
+        .arrowNext ,
+        .arrowPrev {
+            width: auto;
+            font-size: 2.5rem;
+            position: absolute;
+            top: 50%;
+            transform: translate(-150%, -50%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            transition-timing-function: ease-in;
+        }
+        
+        .arrowNext{
+            right: 0;
+            transform: translate(190%, -50%);
+        }
             
-            .arrowNext{
-                right: 0;
-                transform: translate(25%, -50%);
-            }
-            
-            &:hover {
-                .arrowNext,
-                .arrowPrev {
-                    opacity: 1;
-                }
-            }
-
-            .appear-on-click {
+        .show-arrows {
                 opacity: 1;
-            }
+        }
 
-            .column {
-                width: calc(100% / 5);
-    
-                .card {
-                    width: 100%;
-                    aspect-ratio: 5/7;
-                }
-                
+        .column {
+            width: calc(100% / 3.5);
+
+            .card {
+                width: 100%;
+                aspect-ratio: 5/7;
             }
+            
         }
 
     }

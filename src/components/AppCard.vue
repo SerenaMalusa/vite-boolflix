@@ -116,14 +116,13 @@
             border: 1px solid red;
             width: 100%;
             height: 100%;
-            font-size: 0.8rem;
     
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
 
             .card-title {
-                font-size: 0.9rem;
+                font-size: 1.2rem;
             }
 
             .fa-star {
