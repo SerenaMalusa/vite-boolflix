@@ -26,7 +26,7 @@
             </div>
         </figure>
 
-        <div class="card-content text-center see-trough">
+        <div class="card-content text-center">
 
             <div>Tipo: {{ title.type }}</div>
             <div>Titolo: {{ title.title }} </div>
@@ -52,16 +52,27 @@
     @use '../styles/partials/mixins.scss' as *;
     @use '../styles/partials/variables.scss' as *;
 
-    div {
+    .card {
 
         position: relative;
+
+        &:hover {
+            figure {
+                opacity: 0;
+            }
+
+            .card-content {
+                opacity: 1;
+            }
+        }
 
         figure {
             width: 100%;
             height: 100%;
-
+            opacity: 1;
+            
             position: absolute;
-    
+                
             img {
                 object-fit: cover;
             }
@@ -95,14 +106,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-        }
 
-        .opaque {
-            opacity: 1;
-        }
-
-        .see-trough {
-            opacity: 0;
+            opacity: 0;            
         }
         
     }
