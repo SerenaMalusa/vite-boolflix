@@ -27,10 +27,13 @@
                             language: 'it-IT',
                         }
                     }).then((res) => {                    
-                        const result = res.data.cast;
+                        const result = res.data.cast;   
+                        console.log(this.title.title, result);
                         // cicle the first 5 and push them in cast
-                        for (let i = 0; i < 5; i++) {
-                            this.cast.push(result[i].name);
+                        if (result.length > 0 ) {
+                            for (let i = 0; i < 5; i++) {
+                                this.cast.push(result[i].name);
+                            };
                         };
                     })
 
@@ -44,9 +47,11 @@
                         }
                     }).then((res) => {                    
                         const result = res.data.cast;
-                        // cicle the first 5 and push them in cast
-                        for (let i = 0; i < 5; i++) {
-                            this.cast.push(result[i].name);
+                        if (result.length > 0 ) {
+                            // cicle the first 5 and push them in cast
+                            for (let i = 0; i < 5; i++) {
+                                this.cast.push(result[i].name);
+                            };
                         };
                     })
 
@@ -56,8 +61,6 @@
         mounted() {
             //call funtion to find first 5 actors names
             this.fetchActors();
-            // stop loading
-            loader.isLoading = false;
         },
     }
 </script>

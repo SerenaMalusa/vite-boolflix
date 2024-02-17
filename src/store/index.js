@@ -34,6 +34,9 @@ export const titles = reactive ({
 
         // when the response is ready     
         }).then((res) => {
+
+            // stop loading
+            loader.isLoading = false;
             
             // add it to titleList
             this.addToTitlesList(res.data.results);
@@ -44,6 +47,9 @@ export const titles = reactive ({
 
         })
         .catch((error) => {
+
+            // stop loading
+            loader.isLoading = false;
 
             // this.error = {
             //     status: true,
