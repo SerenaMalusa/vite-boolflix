@@ -128,11 +128,6 @@ export const titles = reactive ({
     }
 });
 
-// export const error = reactive ({
-//     status: false,
-//     message: '',    
-// });
-
 
 export const loader = reactive ({
     // switch variables that changes the content of AppMain

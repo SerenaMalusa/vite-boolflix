@@ -1,16 +1,54 @@
 <script>
 
     // import variables from store
+    import axios from 'axios';
     import { titles } from '../store/index';
 
     export default {
         data() {
             return {
                 titles,
+                cast: [],
             }
         },
         props: {
             title: Object,
+        },
+        methods: {
+            fetchActors() {
+                if (this.title.type == 'Movie') {
+
+                    axios.get('https://api.themoviedb.org/3/movie/'+ this.title.id +'/credits', {
+                        params: {
+                            api_key: '875b204ed440a701c5a21db41f3ee0a2',
+                            language: 'it-IT',
+                        }
+                    }).then((res) => {                    
+                        const result = res.data.cast;
+                        for (let i = 0; i < 5; i++) {
+                            this.cast.push(result[i].name);
+                        };
+                    })
+
+                } else if (this.title.type == 'Show') {
+
+                    axios.get('https://api.themoviedb.org/3/tv/'+ this.title.id +'/credits', {
+                        params: {
+                            api_key: '875b204ed440a701c5a21db41f3ee0a2',
+                            language: 'it-IT',
+                        }
+                    }).then((res) => {                    
+                        const result = res.data.cast;
+                        for (let i = 0; i < 5; i++) {
+                            this.cast.push(result[i].name);
+                        };
+                    })
+
+                }
+            }
+        },
+        mounted() {
+            this.fetchActors();
         },
     }
 </script>
@@ -31,7 +69,7 @@
             <div class="card-title">{{ title.type }}</div>
             <div class="card-title">{{ title.title }} </div>
             <div>
-                <span>Lingua Originale: {{ title.ogLan + ' '}}</span>
+                <span class="me-2">Lingua Originale: {{ title.ogLan }}</span>
                 <span :class="'fi fi-'+titles.getLangFlag(title.ogLan)"></span> 
             </div>
             <div v-if="title.title != title.ogTitle">Titolo Originale: {{ title.ogTitle }} </div>
@@ -42,6 +80,10 @@
             </div>
             <hr class="text-primary my-1" />
             <div class="card-overview">
+            <div class="cast mb-1">
+                Cast:
+                <span v-for="(actor,i) in cast">{{ (i != cast.length - 1) ? actor+', ' : actor+'...' }}</span>
+            </div>
                 <p>{{ title.overview }}</p>
             </div>
 

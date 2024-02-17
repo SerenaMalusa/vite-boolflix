@@ -45,6 +45,10 @@
             <p>Trova i tuoi film e show preferiti usando la barra di ricerca in alto a destra.</p>
         </div>
 
+        <div v-else-if="titles.titlesList.length == 0" class="container">
+            <h2 class="mb-3">Siamo spiacenti. La tua ricerca non ha dato alcun risultato...</h2>
+        </div>
+
         <div v-else class="container">
 
             <h2 class="mb-3">Ecco i risultati della tua ricerca:</h2>
