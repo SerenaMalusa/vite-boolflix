@@ -29,7 +29,7 @@
                         language: 'it-IT',
                     }
                 }).then((res) => {                   
-                     
+
                     const result = res.data.cast;   
                     // cicle the first 5 and push them in cast
                     let i = 0;
@@ -76,7 +76,7 @@
             </div>
             <hr class="text-primary my-1" />
             <div class="card-overview">
-            <div class="cast mb-1">
+            <div v-if="cast.length > 0" class="cast mb-1">
                 Cast:
                 <span v-for="(actor,i) in cast">{{ (i != cast.length - 1) ? actor+', ' : actor+'...' }}</span>
             </div>
