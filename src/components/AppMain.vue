@@ -15,6 +15,17 @@
         components: {
             AppCard,
         },  
+        methods: {
+            showNextTitle() {
+                titles.titlesList.push(titles.titlesList[0]);
+                titles.titlesList.shift();
+                // console.log(titles.titlesList);
+            },
+            showPrevTitle() {
+                titles.titlesList.unshift(titles.titlesList.at(-1));
+                titles.titlesList.pop();
+            }  
+        },
 
     }
 </script>
@@ -31,7 +42,7 @@
 
             <h2 class="mb-3">Ecco i risultati della tua ricerca:</h2>
 
-            <div class="row row-gap-4">
+            <div class="row flex-nowrap overflow-hidden pb-2">
                 
                 <div v-for="title in titles.titlesList" class="column">
                 
@@ -41,7 +52,14 @@
                     class="card"
                     />
 
-                </div>                
+                </div>   
+                
+                <span @click="showNextTitle()" class="arrowNext">
+                    <font-awesome-icon class="text-danger" icon="fa-solid fa-chevron-right" />
+                </span>
+                <span @click="showPrevTitle()" class="arrowPrev">
+                    <font-awesome-icon class="text-danger" icon="fa-solid fa-chevron-left" />
+                </span>
 
             </div>
         </div>
@@ -52,14 +70,48 @@
 <style lang="scss" scoped>
     .container {
         padding: 20px 0;
-        .column {
-            width: calc(100% / 5);
 
-            .card {
-                width: 100%;
-                aspect-ratio: 5/7;
+        .row{
+            position: relative;
+
+            
+            .arrowNext ,
+            .arrowPrev {
+                width: 50px;
+                font-size: 2.5rem;
+                position: absolute;
+                top: 50%;
+                transform: translate(-25%, -50%);
+                opacity: 0;
+                transition: opacity 0.5s;
+                transition-timing-function: ease-in;
             }
             
+            .arrowNext{
+                right: 0;
+                transform: translate(25%, -50%);
+            }
+            
+            &:hover {
+                .arrowNext,
+                .arrowPrev {
+                    opacity: 1;
+                }
+            }
+
+            .appear-on-click {
+                opacity: 1;
+            }
+
+            .column {
+                width: calc(100% / 5);
+    
+                .card {
+                    width: 100%;
+                    aspect-ratio: 5/7;
+                }
+                
+            }
         }
 
     }
