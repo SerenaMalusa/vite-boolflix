@@ -130,3 +130,9 @@ export const titles = reactive ({
 //     status: false,
 //     message: '',    
 // });
+
+
+export const loader = reactive ({
+    // switch variables that changes the content of AppMain
+    isFirstLoad: true,
+});

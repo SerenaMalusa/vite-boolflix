@@ -1,18 +1,21 @@
 <script>
 
     // import the global state
-    import { titles } from '../store';
+    import { titles, loader } from '../store';
 
     export default {
         data() {
             return {
                 titles, 
-                searchValue: ''
+                loader,
+                searchValue: '',
             }
         },
         methods: {
             // function that starts the research and handle the digitation's errors
             startSearch() {
+                // change the switch variables that changes the content of AppMain
+                loader.isFirstLoad = false;
 
                 // empty the arrays
                 titles.titlesList = [];

@@ -1,7 +1,7 @@
 <script>
 
     // import variables from store
-    import { titles } from '../store/index';
+    import { titles, loader } from '../store/index';
     // import components
     import AppCard from './AppCard.vue';
 
@@ -9,6 +9,7 @@
         data() {
             return {
                 titles,
+                loader,
             }
         },
         components: {
@@ -21,7 +22,12 @@
 <template>
     <div>
 
-        <div class="container">
+        <div v-if="loader.isFirstLoad" class="container">
+            <h2 class="mb-3">Benvenuto su Boolflix!</h2>
+            <p>Trova i tuoi film e show preferiti usando la barra di ricerca in alto a destra.</p>
+        </div>
+
+        <div v-else class="container">
 
             <h2 class="mb-3">Ecco i risultati della tua ricerca:</h2>
 
